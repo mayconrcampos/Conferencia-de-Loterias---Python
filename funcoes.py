@@ -1,5 +1,6 @@
+from regex import P
 from vars import *
-
+from listaTimes import *
 
 
 def setNumerosSorteadosList(dezenas, tipoLoteria):
@@ -110,15 +111,28 @@ def visualizarApostas(tipo):
     
     conta = 1
     print(f"-=-=-=-=-= Aposta(s) na {tipo} -=-=-=-=-= ")
-    for aposta in loteria:
-        print(f"Aposta {conta}", end=" : ")
-        for numero in sorted(aposta):
-            print(f"- {numero}", end=" ")
+    if tipo == "Time Mania":
         
-        print()
-        conta += 1
+        for aposta in loteria:
+            print(f"Aposta {conta} - Time do Coração: {aposta[-1]}", end=" : ")
+            for numero in aposta[0:-1]:#sorted(aposta):
+                print(f"- {numero}", end=" ")
+        
+            print()
+            conta += 1
     
-    conta = 1
+        conta = 1
+
+    else:
+        for aposta in loteria:
+            print(f"Aposta {conta}", end=" : ")
+            for numero in sorted(aposta):
+                print(f"- {numero}", end=" ")
+
+            print()
+            conta += 1
+
+        conta = 1
 
 
 
@@ -143,7 +157,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                megaSena.append(meuJogo)
+                                megaSena.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(1)
                                 break
@@ -176,7 +190,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                lotoFacil.append(meuJogo)
+                                lotoFacil.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(2)
                                 break
@@ -209,7 +223,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                quina.append(meuJogo)
+                                quina.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(3)
                                 break
@@ -241,7 +255,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                lotoMania.append(meuJogo)
+                                lotoMania.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(4)
                                 break
@@ -275,12 +289,24 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                timeMania.append(meuJogo)
-                                meuJogo = []
-                                visualizarApostas(5)
-                                break
-                            
-                                    
+                                conta = 1
+                                for time in times:
+                                    print(f"Time {conta} : {time}")
+                                    conta += 1
+
+                                timeDoCoracao = input("Digite seu time do coração: ")
+                                if not timeDoCoracao.isnumeric():
+                                    if len(timeDoCoracao) > 0:
+                                        meuJogo.append(timeDoCoracao)
+                                        timeMania.append(sorted(meuJogo))
+                                        meuJogo = []
+                                        visualizarApostas(5)
+                                        break
+                                    else:
+                                        print("É preciso digitar o time do coração.")
+                                else:
+                                    print("Erro! Favor digite o nome do time.")
+     
                         else:
                             print(f"ERRO! Você já inseriu a dezena {dezena}.\n\n\n\n\n")
                     
@@ -288,6 +314,9 @@ def jogar(loteria, numDezenas):
                         print("ERRO! A Time Mania só contempla números entre 1 a 80.\n\n\n\n\n")
                 else:
                     print("Dezena Inválida!\n\n\n\n\n")
+
+
+
         case 6:
             print(f"6. Dupla Sena - {numDezenas} dezenas de 1 a 50.")
             conta = 0
@@ -307,7 +336,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                duplaSena.append(meuJogo)
+                                duplaSena.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(6)
                                 break
@@ -341,7 +370,7 @@ def jogar(loteria, numDezenas):
         
         
                             if len(meuJogo) == numDezenas:
-                                diaDeSorte.append(meuJogo)
+                                diaDeSorte.append(sorted(meuJogo))
                                 meuJogo = []
                                 visualizarApostas(7)
                                 break
@@ -373,7 +402,7 @@ def jogar(loteria, numDezenas):
     
     
                         if len(meuJogo) == numDezenas:
-                            superSete.append(meuJogo)
+                            superSete.append(sorted(meuJogo))
                             meuJogo = []
                             visualizarApostas(8)
                             break
@@ -395,17 +424,20 @@ def confereMegaSena(sorteado, minhaAposta):
     # Verificando número de acertos nas apostas
     if len(sorteado) > 0 and len(minhaAposta) > 0:
         sorteado = sorteado[0]
-
+        minhaAposta = sorted(minhaAposta)
         #visualizaNumerosSorteados(sorteado)
         
         contaAcertos = 0
         for i in range(len(minhaAposta)):
             print(f"Jogo Nº {i+1}", end=" => ")
-            print(sorted(minhaAposta[i]))
             for j in range(len(minhaAposta[i])):
                 if minhaAposta[i][j] in sorteado:
                     contaAcertos += 1
+                    print(f" ({minhaAposta[i][j]}) ", end=" ")
+                else:
+                    print(f" {minhaAposta[i][j]} ", end=" ")
 
+            print("\n")
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
             if contaAcertos == 4:
                 print("Você ganhou o prêmio para Quadra.\n\n\n\n\n")
@@ -433,10 +465,12 @@ def confereLotoFacil(sorteado, minhaAposta):
         contaAcertos = 0
         for i in range(len(minhaAposta)):
             print(f"Jogo Nº {i+1}", end=" => ")
-            print(sorted(minhaAposta[i]))
             for j in range(len(minhaAposta[i])):
                 if minhaAposta[i][j] in sorteado:
                     contaAcertos += 1
+                    print(f" ({minhaAposta[i][j]}) ", end=" ")
+                else:
+                    print(f" {minhaAposta[i][j]} ", end=" ")
 
 
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
@@ -470,12 +504,14 @@ def confereQuina(sorteado, minhaAposta):
         contaAcertos = 0
         for i in range(len(minhaAposta)):
             print(f"Jogo Nº {i+1}", end=" => ")
-            print(sorted(minhaAposta[i]))
             for j in range(len(minhaAposta[i])):
                 if minhaAposta[i][j] in sorteado:
                     contaAcertos += 1
+                    print(f" ({minhaAposta[i][j]}) ", end=" ")
+                else:
+                    print(f" {minhaAposta[i][j]} ", end=" ")
 
-
+            print("\n")
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
             if contaAcertos == 2:
                 print("Você ganhou o prêmio para o Duque.\n\n\n\n\n")
@@ -506,12 +542,14 @@ def confereLotoMania(sorteado, minhaAposta):
         contaAcertos = 0
         for i in range(len(minhaAposta)):
             print(f"Jogo Nº {i+1}", end=" => ")
-            print(sorted(minhaAposta[i]))
             for j in range(len(minhaAposta[i])):
                 if minhaAposta[i][j] in sorteado:
                     contaAcertos += 1
+                    print(f" ({minhaAposta[i][j]}) ", end=" ")
+                else:
+                    print(f" {minhaAposta[i][j]} ", end=" ")
 
-
+            print("\n")
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
             if contaAcertos == 0:
                 print("Parabéns! Você ganhou o prêmio para 0 Acertos!\n\n\n\n\n")
@@ -533,3 +571,43 @@ def confereLotoMania(sorteado, minhaAposta):
             contaAcertos = 0
             print("-="*50)
 
+
+
+def confereTimeMania(sorteado, minhaAposta):
+    print("-=-=-=-=-= Conferindo Apostas da Loto Mania -=-=-=-=-=")
+    # Verificando número de acertos nas apostas
+
+    
+    
+    if len(sorteado) > 0 and len(minhaAposta) > 0:
+        sorteado = sorteado[0]
+        
+        contaAcertos = 0
+        for i in range(len(minhaAposta)):
+            print(f"Jogo Nº {i+1}", end=" => ")
+            for j in range(len(minhaAposta[i][0:-1])):
+                if minhaAposta[i][j] in sorteado:
+                    contaAcertos += 1
+                    print(f" ({minhaAposta[i][j]}) ", end=" ")
+                else:
+                    print(f" {minhaAposta[i][j]} ", end=" ")
+                
+            print("\n")
+            print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
+            if minhaAposta[i][-1] == sorteado[-1]:
+                print("Parabéns, você acertou o time do coração.")
+            elif contaAcertos == 3:
+                print("Parabéns! Você ganhou o prêmio para 3 Acertos!\n\n\n\n\n")
+            elif contaAcertos == 4:
+                print("Você ganhou o prêmio para 4 acertos.\n\n\n\n\n")
+            elif contaAcertos == 5:
+                print("Você ganhou o prêmio para 5 acertos.\n\n\n\n\n")
+            elif contaAcertos == 6:
+                print("Você ganhou o prêmio para 6 acertos.\n\n\n\n\n")
+            elif contaAcertos == 7:
+                print("Você ganhou o prêmio para 7 acertos.\n\n\n\n\n")
+            else:
+                print("Você não ganhou prêmio nenhum. Não foi dessa vez.\n\n\n\n\n")
+
+            contaAcertos = 0
+            print("-="*50)
