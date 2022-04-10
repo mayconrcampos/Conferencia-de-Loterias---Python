@@ -102,9 +102,9 @@ def insereApostas():
                       
                 case "5":
                     print("5. Time Mania")
-                    print("Na Time Mania você pode escolher 20 dezenas")
+                    print("Na Time Mania você pode escolher 10 dezenas")
 
-                    numDezenasTimeMania = 20
+                    numDezenasTimeMania = 10
 
                     jogar(5, numDezenasTimeMania)
 
@@ -221,12 +221,25 @@ def menuConfereApostas():
                         break
 
                 case 5:
-                    print("Conferindo sua(s) Aposta(s) da Time Mania")
-                    pegaResultadoLoteriasAPI("timemania")
+                    if len(timeMania) > 0:
+                        print("Conferindo sua(s) Aposta(s) da Time Mania")
+                        pegaResultadoLoteriasAPI("timemania")
+                        confereTimeMania(sorteadosTimeMania, timeMania)
+                        break
+                    else:
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
+                        break
+
 
                 case 6:
-                    print("Conferindo sua(s) Aposta(s) da Dupla Sena")
-                    pegaResultadoLoteriasAPI("dupla-sena")
+                    if len(duplaSena) > 0:
+                        print("Conferindo sua(s) Aposta(s) da Dupla Sena")
+                        pegaResultadoLoteriasAPI("dupla-sena")
+                        confereDuplaSena(sorteadosDuplaSena, duplaSena)
+                        break
+                    else:
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
+                        break
 
                 case 7:
                     print("Conferindo sua(s) Aposta(s) da Dia de Sorte")

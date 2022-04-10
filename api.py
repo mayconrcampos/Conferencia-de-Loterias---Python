@@ -31,4 +31,8 @@ def pegaResultadoLoteriasAPI(loteria):
     print(f"Acumulado Próx. concurso:       {resultado['acumuladaProxConcurso']}")
     print(f"Data Próx. concurso:            {resultado['dataProxConcurso']}")
     print(f"Nº Próx. Concurso:              {resultado['proxConcurso']}")
+    if resultado['timeCoracao']:
+        print(f"Time do coração:                {resultado['timeCoracao']}")
+        sorteadosTimeMania.append(resultado['timeCoracao'])
+        
     print("----------------------------------------------------")
