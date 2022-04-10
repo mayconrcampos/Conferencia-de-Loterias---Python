@@ -611,3 +611,7 @@ def confereTimeMania(sorteado, minhaAposta):
 
             contaAcertos = 0
             print("-="*50)
+
+
+def confereDuplaSena():
+    pass
