@@ -407,24 +407,19 @@ def confereMegaSena(sorteado, minhaAposta):
                     contaAcertos += 1
 
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
-            if contaAcertos == 11:
-                print("Você ganhou o prêmio mínimo de R$ 5,00\n\n\n\n\n")
-            elif contaAcertos == 12:
-                print("Você ganhou o prêmio para 12 acertos: R$ 10,00\n\n\n\n\n")
-            elif contaAcertos == 13:
-                print("Você ganhou o prêmio para 13 acertos: R$ 25,00\n\n\n\n\n")
-            elif contaAcertos == 14:
-                print("Você ganhou o prêmio para 14 acertos: R$ 25,00\n\n\n\n\n")
-            elif contaAcertos == 15:
-                print("Parabéns! Você ganhou a premiação máxima!\n\n\n\n\n")
+            if contaAcertos == 4:
+                print("Você ganhou o prêmio para Quadra.\n\n\n\n\n")
+            elif contaAcertos == 5:
+                print("Você ganhou o prêmio para Quina.\n\n\n\n\n")
+            elif contaAcertos == 6:
+                print("Você ganhou o prêmio para a Sena.\n\n\n\n\n")
             else:
                 print("Você não ganhou prêmio nenhum. Não foi dessa vez.\n\n\n\n\n")
 
             contaAcertos = 0
             print("-="*50)
         
-    else:
-        print("ERRO! Antes de conferir apostas, é necessário inserir seus jogos e também conferir as Dezenas Sorteadas.\n\n\n\n\n")
+    
 
 
 def confereLotoFacil(sorteado, minhaAposta):
@@ -446,23 +441,22 @@ def confereLotoFacil(sorteado, minhaAposta):
 
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
             if contaAcertos == 11:
-                print("Você ganhou o prêmio mínimo da Loto Fácil: R$5,00\n\n\n\n\n")
+                print("Você ganhou o prêmio para 11 acertos.\n\n\n\n\n")
             elif contaAcertos == 12:
-                print("Você ganhou o prêmio para 12 acertos: R$ 10,00\n\n\n\n\n")
+                print("Você ganhou o prêmio para 12 acertos.\n\n\n\n\n")
             elif contaAcertos == 13:
-                print("Você ganhou o prêmio para 13 acertos: R$ 25,00\n\n\n\n\n")
+                print("Você ganhou o prêmio para 13 acertos.\n\n\n\n\n")
             elif contaAcertos == 14:
-                print("Você ganhou o prêmio para 14 acertos: R$ 25,00\n\n\n\n\n")
+                print("Você ganhou o prêmio para 14 acertos.\n\n\n\n\n")
             elif contaAcertos == 15:
-                print("Parabéns! Você ganhou a premiação máxima!\n\n\n\n\n")
+                print("Parabéns! Você ganhou a premiação para 15 acertos.!\n\n\n\n\n")
             else:
                 print("Você não ganhou prêmio nenhum. Não foi dessa vez.\n\n\n\n\n")
 
             contaAcertos = 0
             print("-="*50)
         
-    else:
-        print("ERRO! Antes de conferir apostas, é necessário inserir seus jogos e também conferir as Dezenas Sorteadas.\n\n\n\n\n")
+    
 
 
 def confereQuina(sorteado, minhaAposta):
@@ -483,24 +477,22 @@ def confereQuina(sorteado, minhaAposta):
 
 
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
-            if contaAcertos == 11:
-                print("Você ganhou o prêmio mínimo da Quina: R$5,00\n\n\n\n\n")
-            elif contaAcertos == 12:
-                print("Você ganhou o prêmio para 12 acertos: R$ 10,00\n\n\n\n\n")
-            elif contaAcertos == 13:
-                print("Você ganhou o prêmio para 13 acertos: R$ 25,00\n\n\n\n\n")
-            elif contaAcertos == 14:
-                print("Você ganhou o prêmio para 14 acertos: R$ 25,00\n\n\n\n\n")
-            elif contaAcertos == 15:
-                print("Parabéns! Você ganhou a premiação máxima!\n\n\n\n\n")
+            if contaAcertos == 2:
+                print("Você ganhou o prêmio para o Duque.\n\n\n\n\n")
+            elif contaAcertos == 3:
+                print("Você ganhou o prêmio para o Terno.\n\n\n\n\n")
+            elif contaAcertos == 4:
+                print("Você ganhou o prêmio para a Quadra.\n\n\n\n\n")
+            elif contaAcertos == 5:
+                print("Parabéns! Você ganhou o prêmio para a Quina!\n\n\n\n\n")
+            
             else:
                 print("Você não ganhou prêmio nenhum. Não foi dessa vez.\n\n\n\n\n")
 
             contaAcertos = 0
             print("-="*50)
         
-    else:
-        print("ERRO! Antes de conferir apostas, é necessário inserir seus jogos e também conferir as Dezenas Sorteadas.\n\n\n\n\n")
+
 
 
 def confereLotoMania(sorteado, minhaAposta):
@@ -521,21 +513,23 @@ def confereLotoMania(sorteado, minhaAposta):
 
 
             print(f"Jogo {i+1}: {contaAcertos} acertos", end=" ---> ")
-            if contaAcertos == 11:
-                print("Você ganhou o prêmio mínimo da Loto Mania: R$5,00\n\n\n\n\n")
-            elif contaAcertos == 12:
-                print("Você ganhou o prêmio para 12 acertos: R$ 10,00\n\n\n\n\n")
-            elif contaAcertos == 13:
-                print("Você ganhou o prêmio para 13 acertos: R$ 25,00\n\n\n\n\n")
-            elif contaAcertos == 14:
-                print("Você ganhou o prêmio para 14 acertos: R$ 25,00\n\n\n\n\n")
+            if contaAcertos == 0:
+                print("Parabéns! Você ganhou o prêmio para 0 Acertos!\n\n\n\n\n")
             elif contaAcertos == 15:
-                print("Parabéns! Você ganhou a premiação máxima!\n\n\n\n\n")
+                print("Você ganhou o prêmio para 15 acertos.\n\n\n\n\n")
+            elif contaAcertos == 16:
+                print("Você ganhou o prêmio para 16 acertos.\n\n\n\n\n")
+            elif contaAcertos == 17:
+                print("Você ganhou o prêmio para 17 acertos.\n\n\n\n\n")
+            elif contaAcertos == 18:
+                print("Você ganhou o prêmio para 18 acertos.\n\n\n\n\n")
+            elif contaAcertos == 19:
+                print("Você ganhou o prêmio para 19 acertos.!\n\n\n\n\n")
+            elif contaAcertos == 20:
+                print("Parabéns! Você ganhou o prêmio para 20 acertos!\n\n\n\n\n")
             else:
                 print("Você não ganhou prêmio nenhum. Não foi dessa vez.\n\n\n\n\n")
 
             contaAcertos = 0
             print("-="*50)
-        
-    else:
-        print("ERRO! Antes de conferir apostas, é necessário inserir seus jogos e também conferir as Dezenas Sorteadas.\n\n\n\n\n")
+

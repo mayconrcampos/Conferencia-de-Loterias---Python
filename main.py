@@ -188,25 +188,37 @@ def menuConfereApostas():
                         confereMegaSena(sorteadosMegaSena, megaSena)
                         break
                     else:
-                        print("Você precisa inserir suas apostas antes de conferir.")
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
                         break
 
                 case 2:
-                    print("Conferindo sua(s) Aposta(s) da Loto Fácil")
-                    pegaResultadoLoteriasAPI("lotofacil")
-                    confereLotoFacil(sorteadosLotoFacil, lotoFacil)
-                    break
+                    if len(lotoFacil) > 0:
+                        print("Conferindo sua(s) Aposta(s) da Loto Fácil")
+                        pegaResultadoLoteriasAPI("lotofacil")
+                        confereLotoFacil(sorteadosLotoFacil, lotoFacil)
+                        break
+                    else:
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
+                        break
 
                 case 3:
-                    print("Conferindo sua(s) Aposta(s) da Quina")
-                    pegaResultadoLoteriasAPI("quina")
-                    confereQuina(sorteadosQuina, quina)
-                    break
+                    if len(quina) > 0:
+                        print("Conferindo sua(s) Aposta(s) da Quina")
+                        pegaResultadoLoteriasAPI("quina")
+                        confereQuina(sorteadosQuina, quina)
+                        break
+                    else:
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
 
                 case 4:
-                    print("Conferindo sua(s) Aposta(s) da Loto Mania")
-                    pegaResultadoLoteriasAPI("lotomania")
-                    confereLotoMania(sorteadosLotoMania, lotoMania)
+                    if len(lotoMania) > 0:
+                        print("Conferindo sua(s) Aposta(s) da Loto Mania")
+                        pegaResultadoLoteriasAPI("lotomania")
+                        confereLotoMania(sorteadosLotoMania, lotoMania)
+                        break
+                    else:
+                        print("Você precisa primeiro inserir suas apostas antes de conferir.")
+                        break
 
                 case 5:
                     print("Conferindo sua(s) Aposta(s) da Time Mania")
